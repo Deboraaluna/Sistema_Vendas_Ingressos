@@ -31,14 +31,19 @@ public class Evento {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
+
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao; }
+
     public List<LocalDate> getDatas() { return datas; }
     public void setDatas(List<LocalDate> datas) { this.datas = datas; }
+
     public String getLocal() { return local; }
     public void setLocal(String local) { this.local = local; }
+
     public Integer getCapacidade() { return capacidade; }
     public void setCapacidade(Integer capacidade) { this.capacidade = capacidade; }
 }

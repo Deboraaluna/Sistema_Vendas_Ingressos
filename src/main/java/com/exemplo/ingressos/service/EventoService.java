@@ -13,8 +13,8 @@ public class EventoService {
 
     @Autowired
     private EventoRepository eventoRepository;
-//os metodos abaixo irão verificar se ao criar um evento, o mesmo estara
-// seguindo os requisistos de capacidade >0, conflito de horario com outro evento criado.
+
+    // Método cria evento, validando se a capacidade é >0
     public Evento criarEvento(Evento evento) {
         if (evento.getCapacidade() <= 0) {
             throw new IllegalArgumentException("Capacidade do evento deve ser maior que 0.");
@@ -22,11 +22,16 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
+    // corrigir para verificar conflito de horário
+    // a lista de data que o metodo list de repository chama
+
     public boolean verificarConflitoDeHorario(LocalDate data, String local) {
-        List<Evento> eventosNoLocal = eventoRepository.findByLocalAndData(local, data);
-        return !eventosNoLocal.isEmpty();
+        // corrigido
+        List<Evento> eventosNoLocal = eventoRepository.findByLocalAndDatasContaining(local, data);
+        return !eventosNoLocal.isEmpty();  // Retorna true se já houver conflito de evento
     }
 
+    // verifica se a capacidade do evento é > 0
     public boolean verificarCapacidade(Evento evento) {
         return evento.getCapacidade() > 0;
     }

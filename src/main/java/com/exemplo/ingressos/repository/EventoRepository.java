@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Long> {
-    List<Evento> findByLocalAndData(String local, LocalDate data);
+    // Consulta para verificar se há eventos no mesmo local com a mesma data através do list
+    List<Evento> findByLocalAndDatasContaining(String local, LocalDate data);
 }
-
-//esse metodo do spring jpa faz uma consulta personalizada no evento com base no horio e local
-
