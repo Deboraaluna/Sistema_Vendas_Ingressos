@@ -22,16 +22,16 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
-    // corrigir para verificar conflito de horário
-    // a lista de data que o metodo list de repository chama
+    // corrige para verificar conflito de horário
+    // a lista de data que o método list de repository chama...
 
     public boolean verificarConflitoDeHorario(LocalDate data, String local) {
-        // corrigido
+
         List<Evento> eventosNoLocal = eventoRepository.findByLocalAndDatasContaining(local, data);
-        return !eventosNoLocal.isEmpty();  // Retorna true se já houver conflito de evento
+        return !eventosNoLocal.isEmpty();  // Retorna true se já houver conflito de evento...
     }
 
-    // verifica se a capacidade do evento é > 0
+    // verifica se a capacidade do evento é > 0...
     public boolean verificarCapacidade(Evento evento) {
         return evento.getCapacidade() > 0;
     }
