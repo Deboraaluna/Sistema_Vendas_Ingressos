@@ -28,8 +28,10 @@ public class Ingresso {
     private LocalDate data;
 
     @Column(nullable = false)
-    private Integer quantidade; // armazena a qtd de ingressos
+    private Integer quantidade; // armazena a quantidade de ingressos
 
+    @Column(nullable = false)
+    private String restricaoPublico; // restrição de público (ex: estudante, PCD, idoso)
 
     public Long getId() {
         return id;
@@ -85,5 +87,13 @@ public class Ingresso {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getRestricaoPublico() {
+        return restricaoPublico;
+    }
+
+    public void setRestricaoPublico(String restricaoPublico) {
+        this.restricaoPublico = restricaoPublico;
     }
 }

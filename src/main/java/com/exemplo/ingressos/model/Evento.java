@@ -29,6 +29,17 @@ public class Evento {
     @Column(nullable = false)
     private Integer capacidade;
 
+    @Column(nullable = false)
+    private String categoria; // Peças de teatro, shows musicais, eventos esportivos, etc.
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -6,6 +6,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Long> {
-    // Consulta para verificar se há eventos no mesmo local com a mesma data através do list...
+
     List<Evento> findByLocalAndDatasContaining(String local, LocalDate data);
+
+    // Filtrar eventos por categoria
+    List<Evento> findByCategoria(String categoria);
+
+    // Filtrar eventos por categoria e local
+    List<Evento> findByCategoriaAndLocal(String categoria, String local);
+
+    // Filtrar eventos por categoria, local e data específica
+    List<Evento> findByCategoriaAndLocalAndDatasContaining(String categoria, String local, LocalDate data);
 }

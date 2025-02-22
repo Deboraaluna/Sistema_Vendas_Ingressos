@@ -14,7 +14,7 @@ public class EventoService {
     @Autowired
     private EventoRepository eventoRepository;
 
-    // Método cria evento, validando se a capacidade é >0
+    // Método para criar um evento validando a capacidade
     public Evento criarEvento(Evento evento) {
         if (evento.getCapacidade() <= 0) {
             throw new IllegalArgumentException("Capacidade do evento deve ser maior que 0.");
@@ -22,17 +22,34 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
-    // corrige para verificar conflito de horário
-    // a lista de data que o método list de repository chama...
-
+    // Método para verificar conflito de horário e local
     public boolean verificarConflitoDeHorario(LocalDate data, String local) {
-
         List<Evento> eventosNoLocal = eventoRepository.findByLocalAndDatasContaining(local, data);
-        return !eventosNoLocal.isEmpty();  // Retorna true se já houver conflito de evento...
+        return !eventosNoLocal.isEmpty();
     }
 
-    // verifica se a capacidade do evento é > 0...
+    // Método para verificar se a capacidade do evento é válida
     public boolean verificarCapacidade(Evento evento) {
         return evento.getCapacidade() > 0;
+    }
+
+    // Listar todos os eventos
+    public List<Evento> listarTodos() {
+        return eventoRepository.findAll();
+    }
+
+    // Buscar eventos por categoria
+    public List<Evento> buscarPorCategoria(String categoria) {
+        return eventoRepository.findByCategoria(categoria);
+    }
+
+    // Buscar eventos por categoria e local
+    public List<Evento> buscarPorCategoriaELocal(String categoria, String local) {
+        return eventoRepository.findByCategoriaAndLocal(categoria, local);
+    }
+
+    // Buscar eventos por categoria, local e data
+    public List<Evento> buscarPorCategoriaLocalEData(String categoria, String local, LocalDate data) {
+        return eventoRepository.findByCategoriaAndLocalAndDatasContaining(categoria, local, data);
     }
 }
