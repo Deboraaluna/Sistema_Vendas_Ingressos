@@ -28,10 +28,11 @@ public class Ingresso {
     private LocalDate data;
 
     @Column(nullable = false)
-    private Integer quantidade; // armazena a quantidade de ingressos
+    private Integer quantidade; // armazena a qtd de ingressos
 
     @Column(nullable = false)
     private String restricaoPublico; // restrição de público (ex: estudante, PCD, idoso)
+
 
     public Long getId() {
         return id;
@@ -96,4 +97,9 @@ public class Ingresso {
     public void setRestricaoPublico(String restricaoPublico) {
         this.restricaoPublico = restricaoPublico;
     }
+
+    public String getNome() {
+        return evento.getNome();
+    }
+
 }
