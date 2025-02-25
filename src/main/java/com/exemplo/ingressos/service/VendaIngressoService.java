@@ -66,8 +66,7 @@ public class VendaIngressoService {
         return "Compra realizada com sucesso!";
     }
     /**
-     * Método para verificar se existe e a situação do ingresso...
-     * pelo ingressoId ID (disponível, vendido, etc).
+     * Método para verificar se existe e a situação do ingresso.
      */
     public String verificarStatusIngresso(Long ingressoId) {
         // Verifica se o ingresso existe
@@ -116,7 +115,6 @@ public class VendaIngressoService {
         LocalDate agora = LocalDate.now();
         return compraRepository.findByCompradorEmail(email).stream()
                 .filter(compra -> compra.getIngresso().getEvento().getDatas().get(0).isAfter(agora))
-
                 .collect(Collectors.toList());
     }
 }

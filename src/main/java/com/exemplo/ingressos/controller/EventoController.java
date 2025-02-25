@@ -27,7 +27,7 @@ public class EventoController {
         return eventoService.verificarConflitoDeHorario(LocalDate.parse(data), local);
     }
 
-    // Listar todos os eventos
+    // Listar os eventos
     @GetMapping
     public List<Evento> listarEventos() {
         return eventoService.listarTodos();
