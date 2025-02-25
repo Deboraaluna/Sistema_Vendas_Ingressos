@@ -30,7 +30,7 @@ public class Evento {
     private Integer capacidade;
 
     @Column(nullable = false)
-    private String categoria; // Peças de teatro, shows musicais, eventos esportivos, etc.
+    private String categoria;
 
     public String getCategoria() {
         return categoria;

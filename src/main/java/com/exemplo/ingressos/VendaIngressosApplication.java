@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.exemplo.ingressos.model") // Especifique o pacote onde as entidades estão localizadas
-@EnableJpaRepositories(basePackages = "com.exemplo.ingressos.repository")  // Escaneia o repositório
+@EntityScan(basePackages = "com.exemplo.ingressos.model")
+@EnableJpaRepositories(basePackages = "com.exemplo.ingressos.repository")
 public class VendaIngressosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VendaIngressosApplication.class, args);
