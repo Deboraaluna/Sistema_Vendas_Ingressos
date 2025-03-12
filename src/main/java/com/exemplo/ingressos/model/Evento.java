@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+
 @Entity
 @Table(name = "eventos")
 public class Evento {
@@ -50,7 +51,7 @@ public class Evento {
     public void setDescricao(String descricao) { this.descricao = descricao; }
 
     public List<LocalDate> getDatas() { return datas; }
-    public void setDatas(List<LocalDate> datas) { this.datas = datas; }
+    public void setDatas(List<LocalDate> datas) { this.datas = this.datas; }
 
     public String getLocal() { return local; }
     public void setLocal(String local) { this.local = local; }
