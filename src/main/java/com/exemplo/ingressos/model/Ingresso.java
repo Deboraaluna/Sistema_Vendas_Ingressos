@@ -2,6 +2,7 @@ package com.exemplo.ingressos.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "ingressos")
@@ -33,7 +34,15 @@ public class Ingresso {
     @Column(nullable = false)
     private String restricaoPublico; // restrição de público (ex: estudante, PCD, idoso)
 
+    private String comprador;
+    private String codigo;
 
+    // Construtor para gerar código único ao criar ingresso
+    public Ingresso() {
+        this.codigo = UUID.randomUUID().toString(); // Geração do código único
+    }
+
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -67,7 +76,7 @@ public class Ingresso {
     }
 
     public Evento getEvento() {
-        return evento;
+        return evento; // Este método foi corrigido
     }
 
     public void setEvento(Evento evento) {
@@ -98,8 +107,23 @@ public class Ingresso {
         this.restricaoPublico = restricaoPublico;
     }
 
-    public String getNome() {
-        return evento.getNome();
+    public String getComprador() {
+        return comprador; // Este método foi corrigido
     }
 
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return evento.getNome(); // O método getNome é válido se o Evento tiver este método
+    }
 }

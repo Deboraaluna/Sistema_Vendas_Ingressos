@@ -12,5 +12,18 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: ingressos_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    ports:
+      - 15672:15672  # interface de gerenciamento
+      - 5672:5672    # porta de comunicação
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
 volumes:
   db_data:
+  rabbitmq_data:
